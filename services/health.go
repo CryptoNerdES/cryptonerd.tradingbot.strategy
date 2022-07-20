@@ -6,7 +6,6 @@ import (
 	"net/http"
 
 	"github.com/CryptoNerdES/cn.example.cryptobot.dca/models"
-	"github.com/adshao/go-binance/v2"
 )
 
 var (
@@ -18,7 +17,7 @@ const (
 )
 
 // Check if conexión with Binance is okey
-func Health(client *binance.Client) error {
+func Health() error {
 	var healthResponse models.HealthResponse
 
 	response, err := http.Get(getBinanceURL(BinanceHealthPath))

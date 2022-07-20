@@ -48,7 +48,7 @@ func GetMovements() ([]models.Movement, error) {
 	return movements, nil
 }
 
-func addNewRow(movement models.Movement) error {
+func AddNewRow(movement models.Movement) error {
 	registerFile, err := getRegisterFile()
 	if err != nil {
 		return err

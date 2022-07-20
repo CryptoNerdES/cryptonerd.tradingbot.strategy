@@ -35,7 +35,7 @@ func TestReturnMovements(t *testing.T) {
 	defer cleanMovements()
 	RegisterFileName = "test.json"
 	newMovement := models.Movement{Token: "BTC", Amount: "0,00467", EntryPrice: "23897.23"}
-	err := addNewRow(newMovement)
+	err := AddNewRow(newMovement)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -56,7 +56,7 @@ func TestAddedNewRowToRegisterFile(t *testing.T) {
 
 	// execute command
 	for i := 0; i < 3; i++ {
-		err := addNewRow(newMovement)
+		err := AddNewRow(newMovement)
 		if err != nil {
 			t.Fatal(err)
 		}

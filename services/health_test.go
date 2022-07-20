@@ -24,9 +24,8 @@ func TestHealthResponseIsOK(t *testing.T) {
 	}))
 	defer server.Close()
 	BinanceEndpoint = server.URL
-	client := GetBinanceClient()
 
-	err := Health(client)
+	err := Health()
 	if err != nil {
 		t.Fatal(err)
 	}
