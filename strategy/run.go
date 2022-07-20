@@ -2,6 +2,7 @@ package strategy
 
 import (
 	"log"
+	"math"
 	"strconv"
 
 	"github.com/CryptoNerdES/cn.example.cryptobot.dca/models"
@@ -12,8 +13,6 @@ func Run(lastMovements []models.Movement) {
 	log.Println(totalAmounts)
 	averagePrice := getAveragePrice(lastMovements)
 	log.Println(averagePrice)
-
-
 }
 
 func getTotalAmount(movements []models.Movement) float64 {
@@ -37,5 +36,6 @@ func getAveragePrice(movements []models.Movement) float64 {
 		}
 		totalPrice += price
 	}
-	return totalPrice / float64(len(movements))
+	average := totalPrice / float64(len(movements))
+	return math.Round(average*100) / 100
 }

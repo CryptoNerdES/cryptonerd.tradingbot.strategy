@@ -12,7 +12,7 @@ var (
 	RegisterFileName string = "register.json"
 )
 
-func cleanMovements() error {
+func CleanMovements() error {
 	return os.Remove(RegisterFileName)
 }
 

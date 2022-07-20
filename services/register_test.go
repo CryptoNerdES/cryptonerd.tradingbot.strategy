@@ -21,7 +21,7 @@ func TestCreatedRegisterFile(t *testing.T) {
 }
 
 func TestReturnEmptyMovements(t *testing.T) {
-	defer cleanMovements()
+	defer CleanMovements()
 	RegisterFileName = "test.json"
 	movements, err := GetMovements()
 	if err != nil {
@@ -32,7 +32,7 @@ func TestReturnEmptyMovements(t *testing.T) {
 }
 
 func TestReturnMovements(t *testing.T) {
-	defer cleanMovements()
+	defer CleanMovements()
 	RegisterFileName = "test.json"
 	newMovement := models.Movement{Token: "BTC", Amount: "0,00467", EntryPrice: "23897.23"}
 	err := AddNewRow(newMovement)
@@ -49,7 +49,7 @@ func TestReturnMovements(t *testing.T) {
 }
 
 func TestAddedNewRowToRegisterFile(t *testing.T) {
-	defer cleanMovements()
+	defer CleanMovements()
 	// variables
 	RegisterFileName = "test.json"
 	newMovement := models.Movement{Token: "BTC", Amount: "0,00467", EntryPrice: "23897.23"}
