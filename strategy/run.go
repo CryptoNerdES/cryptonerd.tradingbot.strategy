@@ -6,13 +6,27 @@ import (
 	"strconv"
 
 	"github.com/CryptoNerdES/cn.example.cryptobot.dca/models"
+	"github.com/CryptoNerdES/cn.example.cryptobot.dca/services"
 )
 
-func Run(lastMovements []models.Movement) {
+func Run(lastMovements []models.Movement) error {
 	totalAmounts := getTotalAmount(lastMovements)
 	log.Println(totalAmounts)
 	averagePrice := getAveragePrice(lastMovements)
 	log.Println(averagePrice)
+	currentPrice, err := services.GetCurrentPriceOfAToken("BTC")
+	if err != nil {
+		return err
+	}
+	percentageIncrease := percentageIncreaseCalculator(averagePrice, currentPrice)
+	log.Println(percentageIncrease)
+
+	return nil
+}
+
+func percentageIncreaseCalculator(averagePrice float64, currentPrice float64) float64 {
+	percentageIncrease := ((currentPrice - averagePrice) / averagePrice) *100
+	return math.Round(percentageIncrease*100) / 100
 }
 
 func getTotalAmount(movements []models.Movement) float64 {

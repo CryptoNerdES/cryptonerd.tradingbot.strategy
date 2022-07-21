@@ -47,3 +47,11 @@ func TestTotalAmountIsOK(t *testing.T) {
 
 	assert.Equal(t, totalAmount, 0.00934)
 }
+
+
+func TestCalculatePercentageIncrease(t *testing.T) {
+	averagePrice := 24764.84
+	currentPrice := 25632.45
+	percentageIncrease := percentageIncreaseCalculator(averagePrice, currentPrice)
+	assert.Equal(t, percentageIncrease, 3.5)
+}
